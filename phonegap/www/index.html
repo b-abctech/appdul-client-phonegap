@@ -44,11 +44,12 @@
     
 	<div data-role="page" id="page-somewhere2go" data-theme="e">
     	<div data-role="header">
+            <a href="#page-discover" data-role="button" data-icon="arrow-l">Back</a>
             <h1>Places</h1>
         </div>
         <div data-role="content">
 			<div data-role="collapsible-set">
-              	<div data-role="collapsible">
+              	<div data-role="collapsible" class="places-most-checkin">
                 <h3>Currently most checked-in</h3>
                 <p>                
                 <ul data-role="listview">
@@ -69,5 +70,21 @@
             <h4>Footer</h4>
         </div>
     </div>
+    
+	<div data-role="page" id="page-venue-detail" data-theme="e">
+    	<div data-role="header">
+            <a href="#page-somewhere2go" data-role="button" data-icon="arrow-l">Back</a>
+            <h1></h1>
+        </div>
+        <div data-role="content">
+			<h1></h1>
+   		</div>
+   		<div data-role="footer">
+            <h4>Footer</h4>
+        </div>
+    </div>
+    <script type="text/javascript">
+		app.initialize();
+	</script>
 </body>
 </html>
