@@ -60,5 +60,6 @@ var app = {
 };
 
 $('.venue_link').live("click", function (){
-	
+	var venue_id = $(this).data("id");
+	$.mobile.changePage("#page-venue-detail");
 });
