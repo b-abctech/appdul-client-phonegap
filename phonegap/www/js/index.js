@@ -26,7 +26,6 @@ var app = {
 				var venue_list = '';
 				for( i = 0 ; i < data.length ; i++ ){
 					var venue_id = data[i]['id'];
-					var temp = "aaaa";
 					var venue = '<li>' + 
 							'<a class="venue_link" data-id="'+ data[i]['id'] +'">' +
 							'<h3>' + data[i]['name'] + '</h3>' + 
@@ -61,5 +60,5 @@ var app = {
 };
 
 $('.venue_link').live("click", function (){
-	alert($(this).data("id"));
+	
 });
