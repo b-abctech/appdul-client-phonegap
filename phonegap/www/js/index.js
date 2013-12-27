@@ -19,14 +19,33 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+    	this.bindEvents();
+		$('.places-most-checkin').bind('expand', function () {
+			$('.places-most-checkin ul').html('');
+			$.getJSON("http://appdul/services/venues_trend.php", function(data){
+				var venue_list = '';
+				for( i = 0 ; i < data.length ; i++ ){
+					var venue_id = data[i]['id'];
+					var temp = "aaaa";
+					var venue = '<li>' + 
+							'<a class="venue_link" data-id="'+ data[i]['id'] +'">' +
+							'<h3>' + data[i]['name'] + '</h3>' + 
+							'<p>' + data[i]['categoryName'] + '<p>' + 
+							'<span class="ui-li-count">' + data[i]['hereNowCount'] + '</span>' + 
+							'</a>' + 
+						'</li>';
+					venue_list += venue;
+				}
+				$('.places-most-checkin ul').append(venue_list).listview('refresh');
+			});
+		});
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+       	document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
@@ -37,7 +56,10 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        
+		
     }
 };
 
+$('.venue_link').live("click", function (){
+	alert($(this).data("id"));
+});
