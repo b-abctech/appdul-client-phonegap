@@ -62,4 +62,13 @@ var app = {
 $('.venue_link').live("click", function (){
 	var venue_id = $(this).data("id");
 	$.mobile.changePage("#page-venue-detail");
+    $.getJSON("http://appdul/services/venue_detail.php?vid="+venue_id )
+        .done(function(data){
+            console.log('data loaded');
+            $('.venue-detail').html(data.address);
+        })
+        .fail(function( jqxhr, textStatus, error ) {
+            var err = textStatus + ", " + error;
+            console.log( "Request Failed: " + err );
+        });
 });
