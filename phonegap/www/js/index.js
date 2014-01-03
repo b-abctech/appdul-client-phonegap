@@ -22,21 +22,28 @@ var app = {
     	this.bindEvents();
 		$('.places-most-checkin').bind('expand', function () {
 			$('.places-most-checkin ul').html('');
-			$.getJSON("http://appdul/services/venues_trend.php", function(data){
-				var venue_list = '';
-				for( i = 0 ; i < data.length ; i++ ){
-					var venue_id = data[i]['id'];
-					var venue = '<li>' + 
-							'<a class="venue_link" data-id="'+ data[i]['id'] +'">' +
-							'<h3>' + data[i]['name'] + '</h3>' + 
-							'<p>' + data[i]['categoryName'] + '<p>' + 
-							'<span class="ui-li-count">' + data[i]['hereNowCount'] + '</span>' + 
-							'</a>' + 
-						'</li>';
-					venue_list += venue;
-				}
-				$('.places-most-checkin ul').append(venue_list).listview('refresh');
-			});
+            $.getJSON("http://appdul/services/venues_trend.php")
+                .done(function(data){
+                    if( data.length == 0 ) {
+                        $('.list-places-container').html('- There is no place recommend at a moment -');
+                        $('.list-places-container').addClass('data-not-found');
+                    }else{
+                        $('.list-places-container').html('');
+                        var venue_list = '';
+                        for( i = 0 ; i < data.length ; i++ ){
+                            var venue_id = data[i]['id'];
+                            var venue = '<li>' + 
+                                    '<a class="venue_link" data-id="'+ data[i]['id'] +'">' +
+                                    '<h3>' + data[i]['name'] + '</h3>' + 
+                                    '<p>' + data[i]['categoryName'] + '<p>' + 
+                                    '<span class="ui-li-count">' + data[i]['hereNowCount'] + '</span>' + 
+                                    '</a>' + 
+                                '</li>';
+                            venue_list += venue;
+                        }
+                        $('.places-most-checkin ul').append(venue_list).listview('refresh');
+                    }
+                });
 		});
     },
     // Bind Event Listeners
@@ -60,15 +67,29 @@ var app = {
 };
 
 $('.venue_link').live("click", function (){
+    $('.venue-detail-content').hide();
 	var venue_id = $(this).data("id");
 	$.mobile.changePage("#page-venue-detail");
     $.getJSON("http://appdul/services/venue_detail.php?vid="+venue_id )
         .done(function(data){
             console.log('data loaded');
-            $('.venue-detail').html(data.address);
+            $('.venue-name').html(data.name);
+            $('.venue-photo').attr('src', data.imageURL);
+            $('.venue-type').html(data.categoryName);
+            $('.venue-opentime').html(data.opentime);
+            $('.venue-detail').html(data.description);
+            $('.venue-checkedin').html(data.checkinsCount);
+            $('.venue-herenow').html(data.hereNowCount);
+            //$('.venue-website a').attr('href',data.url);
+            $('.venue-website a').html(data.url);
+            $('.venue-detail-content').fadeIn(200);
         })
         .fail(function( jqxhr, textStatus, error ) {
             var err = textStatus + ", " + error;
             console.log( "Request Failed: " + err );
-        });
+    });
+});
+
+$('.venue-website a').live("click", function(){
+    window.open($(this).html(), '_system');
 });
