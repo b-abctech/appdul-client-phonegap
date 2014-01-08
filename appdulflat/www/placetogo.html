@@ -72,6 +72,54 @@
                 </nav>
             </div>
         </div>
+
+        <div data-role="page" id="page-venue-detail" data-theme="e">
+            <div data-role="header">
+                <a href="#page-somewhere2go" data-role="button" data-icon="arrow-l">Back</a>
+                <h1></h1>
+            </div>
+            <div data-role="content" class="venue-detail-content" data-inset="true">
+                <img class="venue-photo" >
+                <ul data-role="listview">
+                    <li data-role="list-divider" class="venue-name" data-theme="a"></li>
+                    <li>
+                        <label>Type:</label>
+                        <span class="venue-type"></span>
+                    </li>
+                    <li>
+                        <label>Opentime:</label>
+                        <span class="venue-opentime"></span>
+                    </li>
+                    <li>
+                        <label>Detail:</label>
+                        <span class="venue-detail"></span>
+                    </li>
+                    <li>
+                        <label>People were here</label>
+                        <i class="fa fa-map-marker"></i>
+                        <span class="venue-checkedin"></span>
+                        <i class="fa fa-male"></i>
+                        <span class="venue-herenow"></span>
+                    </li>
+                    <li>
+                        <label>Website:</label>
+                        <span class="venue-website"><a href="#">-</a></span>
+                    </li>
+                </ul> 
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li>
+                            <a href="#" data-icon="search" class="ui-btn-active ui-state-persist">Discover</a>
+                        </li>
+                        <li><a href="#" data-icon="grid" class="ui-disabled">Pins</a></li>
+                        <li><a href="#" data-icon="star" class="ui-disabled">Friends</a></li>
+                        <li><a href="#" data-icon="gear" class="ui-disabled">Setting</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
         <script src="jquery/jquery-2.0.3.min.js"></script>
         <script src="jquery/jquery.mobile-1.4.0.min.js"></script>
         <script type="text/javascript" src="js/placetogo.js"></script>

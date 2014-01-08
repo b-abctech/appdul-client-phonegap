@@ -42,6 +42,30 @@ var app = {
     }
 };
 
+$(document).on('click', '.venue_link', function(){ 
+    $('.venue-detail-content').hide();
+    var venue_id = $(this).data("id");
+    $.mobile.changePage("#page-venue-detail");
+    $.getJSON("http://appdul/services/venue_detail.php?vid="+venue_id )
+        .done(function(data){
+            console.log('data loaded');
+            $('.venue-name').html(data.name);
+            $('.venue-photo').attr('src', data.imageURL);
+            $('.venue-type').html(data.categoryName);
+            $('.venue-opentime').html(data.opentime);
+            $('.venue-detail').html(data.description);
+            $('.venue-checkedin').html(data.checkinsCount);
+            $('.venue-herenow').html(data.hereNowCount);
+            //$('.venue-website a').attr('href',data.url);
+            $('.venue-website a').html(data.url);
+            $('.venue-detail-content').fadeIn(200);
+        })
+        .fail(function( jqxhr, textStatus, error ) {
+            var err = textStatus + ", " + error;
+            console.log( "Request Failed: " + err );
+    });
+});
+
 function loadMostPlaceCheckin(){
     // most checkin data ---------------------------------- 
     $('.places-most-checkin ul').html('');
