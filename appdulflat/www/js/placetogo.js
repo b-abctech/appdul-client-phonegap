@@ -46,7 +46,7 @@ $(document).on('click', '.venue_link', function(){
     $('.venue-detail-content').hide();
     var venue_id = $(this).data("id");
     $.mobile.changePage("#page-venue-detail");
-    $.getJSON("http://appdul/services/venue_detail.php?vid="+venue_id )
+    $.getJSON( host_service_url + "venue_detail.php?vid="+venue_id )
         .done(function(data){
             console.log('data loaded');
             $('.venue-name').html(data.name);
@@ -69,7 +69,7 @@ $(document).on('click', '.venue_link', function(){
 function loadMostPlaceCheckin(){
     // most checkin data ---------------------------------- 
     $('.places-most-checkin ul').html('');
-    $.getJSON("http://appdul/services/venues_trend.php")
+    $.getJSON( host_service_url + "venues_trend.php")
         .done(function(data){
             if( data.length == 0 ) {
                 $('.list-places-container').html('- There is no place recommend at a moment -');
