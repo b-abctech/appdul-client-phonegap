@@ -45,6 +45,9 @@ var app = {
     }
 };
 
+$(document).ready(function() {
+    $( "[data-role='footer']" ).toolbar();
+});
 $(document).on('click', '.venue_link', function(){ 
     $('.venue-detail-content').hide();
     var venue_id = $(this).data("id");
