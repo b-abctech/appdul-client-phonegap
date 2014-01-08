@@ -27,6 +27,7 @@
         <link rel="stylesheet" href="jquery/jquery.mobile-1.4.0.min.css" />
         <link rel="stylesheet" href="jquery/jquery.mobile.flatui.css" />
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/app.css" />
         <title>Hello World</title>
     </head>
     <body>
@@ -38,40 +39,24 @@
             <div data-role="content">
                 <div data-role="collapsible-set">
                     <div data-role="collapsible" class="places-most-checkin" data-collapsed-icon="flat-location" data-expanded-icon="flat-cross">
-                        <h3>Currently most checked-in</h3>
-                        <p class="list-places-container">                
-                            <ul data-role="listview" class="list-places" data-theme="c" data-content-theme="c">
-                            </ul>
-                        </p>
+                        <h3>Currently most checked-in</h3>    
+                        <p class="data-not-found">- There is no place recommend at a moment -</p>        
+                        <ul data-role="listview" class="list-places list-custom-border" data-theme="c" data-content-theme="c">
+                        </ul>
                     </div>
                     <div data-role="collapsible" class="events-recommend" data-collapsed="true" data-collapsed-icon="flat-bubble" data-expanded-icon="flat-cross">
                         <h3>Recommended Events</h3>
-                        <p class="list-events-container">
-                            <ul data-role="listview" class="list-events" data-theme="c" data-content-theme="c">
-                            </ul>
-                        </p>
+                        <ul data-role="listview" class="list-events list-custom-border" data-theme="c" data-content-theme="c">
+                        </ul>
                     </div>
                     <div data-role="collapsible" class="now-showings" data-collapsed="true"  data-collapsed-icon="flat-video" data-expanded-icon="flat-cross">
                         <h3>Now Showing</h3>
-                        <p class="list-showing-container">
-                            <ul data-role="listview" class="list-nowshowing" data-theme="c" data-content-theme="c">
-                            </ul>
-                        </p>
+                        <ul data-role="listview" class="list-nowshowing list-custom-border" data-theme="c" data-content-theme="c">
+                        </ul>
                     </div>
                 </div>  
             </div>
-            <div data-role="footer" data-position="fixed">
-                <nav data-role="navbar">
-                    <ul>
-                        <li>
-                            <a href="#" data-icon="search" class="ui-btn-active ui-state-persist">Discover</a>
-                        </li>
-                        <li><a href="#" data-icon="grid" class="ui-disabled">Pins</a></li>
-                        <li><a href="#" data-icon="star" class="ui-disabled">Friends</a></li>
-                        <li><a href="#" data-icon="gear" class="ui-disabled">Setting</a></li>
-                    </ul>
-                </nav>
-            </div>
+            
         </div>
 
         <div data-role="page" id="page-venue-detail" data-theme="e">
@@ -108,18 +93,18 @@
                     </li>
                 </ul> 
             </div>
-            <div data-role="footer" data-position="fixed">
-                <nav data-role="navbar">
-                    <ul>
-                        <li>
-                            <a href="#" data-icon="search" class="ui-btn-active ui-state-persist">Discover</a>
-                        </li>
-                        <li><a href="#" data-icon="grid" class="ui-disabled">Pins</a></li>
-                        <li><a href="#" data-icon="star" class="ui-disabled">Friends</a></li>
-                        <li><a href="#" data-icon="gear" class="ui-disabled">Setting</a></li>
-                    </ul>
-                </nav>
-            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-theme="e">
+            <nav data-role="navbar">
+                <ul>
+                    <li>
+                        <a href="discover.html" rel="external" data-icon="search" class="ui-btn-active ui-state-persist">Discover</a>
+                    </li>
+                    <li><a href="#" data-icon="grid" class="ui-disabled">Pins</a></li>
+                    <li><a href="#" data-icon="star" class="ui-disabled">Friends</a></li>
+                    <li><a href="#" data-icon="gear" class="ui-disabled">Setting</a></li>
+                </ul>
+            </nav>
         </div>
         <script src="jquery/jquery-2.0.3.min.js"></script>
         <script src="jquery/jquery.mobile-1.4.0.min.js"></script>

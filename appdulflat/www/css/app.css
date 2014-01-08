@@ -1,0 +1,4 @@
+.list-custom-border li {
+    border-top:1px solid #DDD;
+    border-bottom:1px solid #DDD;
+}
