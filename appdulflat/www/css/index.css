@@ -1,3 +1,9 @@
-#page-splash {
-    padding-top:400px;
+html .ui-overlay-e, html .ui-page-theme-e, html .ui-page-theme-e .ui-panel-wrapper {
+    background:none!important;
+    background-color: #FFF;
+}
+
+.logo-welcome{
+    margin:40px auto 40px auto;
+    display: block;
 }
