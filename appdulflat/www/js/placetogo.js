@@ -21,6 +21,9 @@ var app = {
     initialize: function() {
         this.bindEvents();
         $('.places-most-checkin').bind('expand', loadMostPlaceCheckin());
+        $('.events-recommend').bind('expand', loadEventsRecommended());
+        $('.now-showings').bind('expand', loadNowShowing());
+
     },
     // Bind Event Listeners
     //
@@ -95,4 +98,67 @@ function loadMostPlaceCheckin(){
                 $('.list-places-container').html('- Can\' connect to server -');
                 $('.list-places-container').addClass('data-not-found');
     });
+}
+
+function loadEventsRecommended(){
+    // event recommend ---------------------------------
+    $('.events-recommend ul').html('');
+    $.getJSON( host_service_url + "events_trend.php")
+        .done(function(data) {
+            if( data.length == 0 ) {
+                $('.list-events-container').html('- There is no events recommend at a moment -');
+                $('.list-events-container').addClass('data-not-found');
+            }else{
+                $('.list-events-container').html('');
+                var event_list = '';
+                for( i = 0 ; i < data.length ; i++ ){
+                    var evt = '<li>' + 
+                            '<a class="event_link" data-id="'+ data[i]['id'] +'">' +
+                            '<img src="'+data[i]['imageThumbURL']+'" >' + 
+                            '<h3>' + data[i]['name'] + '</h3>' + 
+                            '</a>' + 
+                        '</li>';
+                    event_list += evt;
+                }
+                $('.list-events').append(event_list).listview('refresh');
+            }
+        })
+        .fail(function( jqxhr, textStatus, error ){
+            var err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+                $('.list-events-container').html('- Can\' connect to server -');
+                $('.list-events-container').addClass('data-not-found');
+    });
+}
+
+function loadNowShowing(){
+    // event recommend ---------------------------------
+    $('.now-showings ul').html('');
+    $.getJSON( host_service_url + "showing_list.php")
+        .done(function(data) {
+            if( data.length == 0 ) {
+                $('.list-showing-container').html('- There is no events recommend at a moment -');
+                $('.list-showing-container').addClass('data-not-found');
+            }else{
+                $('.list-showing-container').html('');
+                var event_list = '';
+                for( i = 0 ; i < data.length ; i++ ){
+                    var evt = '<li>' + 
+                            '<a class="showing-link" data-id="'+ data[i]['id'] +'">' +
+                            '<img src="'+data[i]['imageThumbURL']+'" >' + 
+                            '<h3>' + data[i]['name'] + '</h3>' + 
+                            '<p>' + data[i]['type'] + '</p>' + 
+                            '</a>' + 
+                        '</li>';
+                    event_list += evt;
+                }
+                $('.list-nowshowing').append(event_list).listview('refresh');
+            }
+        })
+        .fail(function( jqxhr, textStatus, error ){
+            var err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+                $('.list-showing-container').html('- Can\' connect to server -');
+                $('.list-showing-container').addClass('data-not-found');
+    });    
 }
