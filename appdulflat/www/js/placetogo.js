@@ -78,16 +78,16 @@ function loadMostPlaceCheckin(){
     $.getJSON( host_service_url + "venues_trend.php")
         .done(function(data){
             if( data.length == 0 ) {
-                $('.list-places-container').html('- There is no place recommend at a moment -');
-                $('.list-places-container').addClass('data-not-found');
+                $('.places-most-checkin .data-not-found').css('display','block');
             }else{
+                $('.places-most-checkin .data-not-found').css('display','none');
                 $('.list-places-container').html('');
                 var venue_list = '';
                 for( i = 0 ; i < data.length ; i++ ){
                     var venue = '<li>' + 
                             '<a class="venue_link" data-id="'+ data[i]['id'] +'">' +
                             '<h3>' + data[i]['name'] + '</h3>' + 
-                            '<p>' + data[i]['categoryName'] + '<p>' + 
+                            '<span>' + data[i]['categoryName'] + '<span>' + 
                             '</a>' + 
                         '</li>';
                     venue_list += venue;
@@ -98,8 +98,7 @@ function loadMostPlaceCheckin(){
             .fail(function( jqxhr, textStatus, error ) {
                 var err = textStatus + ", " + error;
                 console.log( "Request Failed: " + err );
-                $('.list-places-container').html('- Can\' connect to server -');
-                $('.list-places-container').addClass('data-not-found');
+                alert('Sorry, server connection problem');
     });
 }
 
