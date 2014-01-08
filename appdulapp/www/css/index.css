@@ -1,32 +1,3 @@
-#main-menu-discover .ui-li-icon {
-    max-width:25px;
-    max-height:25px;
-    top:.5em;
-}
 #page-splash {
 	padding-top:400px;
-}
-.data-not-found {
-    color:#454545;
-    font-size: 0.9em;
-    font-style: italic;
-}
-.venue-detail-content ul {
-    padding:1em;
-}
-.venue-detail-content li {
-    line-height: 1.5em;
-    margin-top: 10px;
-}
-.venue-detail-content label {
-    color:#454545;
-    font-size: 0.8em;
-    font-weight: 800;
-    display: block;
-}
-.venue-detail-content span {
-    font-size:0.9em;
-}
-.venue-checkedin {
-    margin-right: 2em;
 }
