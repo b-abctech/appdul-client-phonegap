@@ -2,3 +2,9 @@
     border-top:1px solid #DDD;
     border-bottom:1px solid #DDD;
 }
+.data-not-found {
+    color:#ABABAB;
+    font-size: 0.9em;
+    font-style: italic;
+    display:none;
+}
